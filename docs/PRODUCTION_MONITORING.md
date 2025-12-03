@@ -15,6 +15,22 @@ CORS_ORIGINS=http://localhost:3000,https://yourdomain.com,https://www.yourdomain
 # RATELIMIT_ENABLED=true
 ```
 
+## LLM Runtime (Production)
+
+Important: Production LLM runtimes (e.g., Ollama, llama.cpp instances) must run remotely on the Kalmatura managed hosts. Do NOT host production LLM runtimes on the application host.
+
+Add the following production-only environment variables and point them to your Kalmatura runtime endpoints:
+
+```bash
+# Kalmatura LLM runtime
+KALMATURA_HOST=kalmatura.example
+KALMATURA_LLM_URL=https://llm.kalmatura.example
+KALMATURA_LLM_API_KEY=your-kalmatura-llm-api-key
+```
+
+For local development you may still run a local LLM proxy (ollama/llama.cpp) behind `USE_LOCAL_LLM=true`, but ensure `USE_LOCAL_LLM` is false or unset in production `.env` on Kalmatura.
+
+
 ## Middleware Features
 
 ### 1. Rate Limiting (slowapi)

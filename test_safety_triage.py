@@ -400,8 +400,17 @@ async def test_model_safety(model: str, prompts: List[SafetyPrompt]) -> List[Dic
     print(f"TESTING MODEL: {model}")
     print(f"{'=' * 80}")
 
-    ollama_base_url = os.getenv("LOCAL_LLM_PROXY_URL", "http://45.61.60.3:8002")
-    ollama_api_key = os.getenv("LOCAL_LLM_API_KEY", "your-secure-api-key-here")
+    # Get Ollama configuration - prefer Kalmatura for production
+    use_local_llm = os.getenv("USE_LOCAL_LLM", "false").lower() == "true"
+
+    if use_local_llm:
+        # Local development mode
+        ollama_base_url = os.getenv("LOCAL_LLM_PROXY_URL", "http://45.61.60.3:8002")
+        ollama_api_key = os.getenv("LOCAL_LLM_API_KEY", "your-secure-api-key-here")
+    else:
+        # Production mode - use Kalmatura-hosted LLM runtime
+        ollama_base_url = os.getenv("KALMATURA_LLM_URL", "http://45.61.60.3:8002")
+        ollama_api_key = os.getenv("KALMATURA_LLM_API_KEY", "your-secure-api-key-here")
     adapter = OllamaAdapter(ollama_api_key, ollama_base_url)
 
     results = []

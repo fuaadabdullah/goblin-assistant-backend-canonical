@@ -5,29 +5,30 @@
 
 **Date:** December 1, 2025
 
-## 1. ✅ LOCAL_LLM_API_KEY - SECURED
+## 1. ✅ KALMATURA_LLM_API_KEY - SECURED
 
 **Status:** COMPLETE
 **Old Value:** `your-secure-api-key-here` (placeholder)
 **New Value:** `goblin-llm-hrDD-3IO83-YpusDBHXV_V0r7Lx9sMtvEs4CWBnF2kE`
 
 **What was done:**
-- Generated cryptographically secure random API key
-- Updated `backend/.env` with new key
-- Key is now production-ready
+- Generated cryptographically secure random API key for Kalmatura LLM runtime
+- Updated `backend/.env` with new KALMATURA_LLM_API_KEY
+- Key is now production-ready for Kalmatura-hosted LLM endpoints
 
 **Security Note:**
 - The key should be stored in a managed secrets store and not kept in plaintext in files. Please move this key into your secrets manager (Render, HashiCorp Vault, AWS Secrets Manager, or similar) and rotate it periodically.
 
-**⚠️ IMPORTANT:** You need to update the remote proxy on Kamatera:
+**⚠️ IMPORTANT:** You need to configure the Kalmatura LLM runtime with this API key:
 ```bash
-# SSH into Kamatera VPS
-ssh user@45.61.60.3
+# SSH into Kalmatura host
+ssh deploy@${KALMATURA_HOST}
 
-# Edit the local_llm_proxy.py configuration or set environment variable
-export LOCAL_LLM_API_KEY="goblin-llm-hrDD-3IO83-YpusDBHXV_V0r7Lx9sMtvEs4CWBnF2kE"
+# Configure the LLM runtime service with the new API key
+export KALMATURA_LLM_API_KEY="goblin-llm-hrDD-3IO83-YpusDBHXV_V0r7Lx9sMtvEs4CWBnF2kE"
 
-# Restart the proxy service
+# Restart the LLM runtime service
+systemctl restart kalmatura-llm-runtime
 ```
 
 ---

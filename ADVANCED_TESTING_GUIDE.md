@@ -268,16 +268,16 @@ cat master_test_results.json | jq .
 
 ### Tests Failing to Connect
 
-**Issue:** Cannot reach Ollama server at 45.61.60.3:8002
+**Issue:** Cannot reach Kalmatura LLM runtime
 
 **Solution:**
 ```bash
 # Check environment variables
-echo $LOCAL_LLM_PROXY_URL
-echo $LOCAL_LLM_API_KEY
+echo $KALMATURA_LLM_URL
+echo $KALMATURA_LLM_API_KEY
 
-# Test connectivity
-curl http://45.61.60.3:8002/api/tags
+# Test connectivity (adjust URL for your Kalmatura endpoint)
+curl ${KALMATURA_LLM_URL}/api/tags
 ```
 
 ### High Latency
