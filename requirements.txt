@@ -1,0 +1,27 @@
+fastapi
+uvicorn[standard]
+pydantic
+email-validator
+PyJWT
+bcrypt
+python-multipart
+httpx
+cryptography
+python-dotenv
+sqlalchemy
+alembic
+psycopg2-binary
+supabase
+openai
+anthropic
+google-generativeai
+redis[hiredis]
+pytest
+pytest-asyncio
+
+# Production monitoring (lightweight, no heavy dependencies)
+python-json-logger>=2.0.7
+prometheus-client>=0.19.0
+
+# Load testing (optional, install separately: pip install locust)
+# locust>=2.20.0
