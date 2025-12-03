@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environment
+venv/
+.env
+.env.*
+
+# Byte-compiled / optimized / DLL files
+*.pyc
+*.pyo
+*.pyd
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Pytest
+.pytest_cache/
+
+# Editor files
+.DS_Store
+.vscode/
+.idea/
+
+# Database and large artifacts
+goblin_assistant.db
+test_chat_routing.db
+*.sqlite3
+*.tar.gz
+*.mp3
+
+# logs
+logs/
+
